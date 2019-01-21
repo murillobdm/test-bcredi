@@ -1,0 +1,221 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Fontawesome
+@import '~font-awesome/scss/font-awesome';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Customização */
+
+.maintitle p
+{
+  display: inline-block;
+}
+
+.maintitle .updatedate
+{
+  float: right;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  line-height: 2.7em;
+}
+
+.lastupdade
+{
+  line-height: 2.7em;
+  margin-bottom: 3.75em;
+  text-align: right;
+}
+
+
+#content-repos {
+  border-right: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+
+  padding-top: 4%;
+}
+
+.repoblock-box {
+  margin: 0 4% 4% 4%;
+  padding: 4%;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  background: #ffffff;
+}
+
+.repoblock-box:hover
+{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.repoblock-box h3,
+.repoblock-box p {
+  padding: 0;
+  margin: 0;
+}
+
+.repoblock-box .desc {
+  padding: 2%;
+  font-size: 0.89em;
+
+  border: 1px solid #dee2e6;
+  margin: 2% 0;
+
+  background: #f5f6f7;
+  opacity: 0.7;
+}
+
+a.repo-link
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+.repo-photo
+{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.gitbuttons
+{
+  display: block;
+  line-height: 2.8em;
+}
+
+.gitbutton
+{
+  font-size: 14px;
+  line-height: 22px;
+  padding: 5px 10px;
+  color: #333;
+}
+
+.gitbutton-left
+{
+  border-top: 1px solid #d5d5d5;
+  border-left: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
+
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc, #eee);
+  border-radius: 4px 0 0 4px;
+}
+
+.gitbutton-right
+{
+  border: 1px solid #d5d5d5;
+
+  background-color: #fff;
+  border-radius: 0 4px 4px 0;
+  left: -1;
+}
+
+.filelist-element
+{
+  margin-bottom: 0.4rem;
+  padding: 0;
+  text-decoration: none;
+}
+
+.filelist-element:hover
+{
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+.file
+{
+  color: #000000;
+  opacity: 0.8;
+}
+
+.folder
+{
+  color: #cc8400 !important;
+}
+
+.code-repos
+{
+  border: 1px solid #dee2e6;
+  padding-top: 4%;
+}
+
+.code-box
+{
+  margin: 0 4% 4% 4%;
+  padding: 4%;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  background: #ffffff;
+
+  max-height: 62.6rem;
+  overflow-y: scroll;
+}
+
+.code-box p
+{
+  margin: 0;
+  padding: 0;
+}
+
+.code-box p:last-child
+{
+  padding-bottom: 4%;
+}
+
+p#thepath
+{
+  margin: 0 0 1.0% 4.5%;
+  padding: 0;
+}
+
+#all
+{
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 990;
+
+  padding-top: 20vh;
+}
+
+#all h3,
+#all h5,
+#all p
+{
+  color: #ffffff;
+  opacity: 1;
+  position: relative;
+  z-index: 999;
+}
+
+.apresentacao
+{
+  opacity: 0.40;
+}
+
+.btndownload
+{
+  line-height: 1.68 !important;
+  margin-top: -1px;
+}
