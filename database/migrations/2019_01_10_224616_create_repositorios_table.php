@@ -28,6 +28,7 @@ class CreateRepositoriosTable extends Migration
             $table->string('REP_FORKS', 6);
             $table->string('REP_BUILTBY', 3000);
             $table->longText('REP_TREE');
+            $table->string('REP_SHA');
 
             $table->timestamps();
         });

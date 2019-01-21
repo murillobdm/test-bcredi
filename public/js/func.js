@@ -3,6 +3,10 @@ jQuery(document).ready(function(){
     var base_url = window.location.origin;
 
     jQuery('body').on('click', 'a.repo-link', function () {
+
+        jQuery('.clicked').css('border', '0px solid red').removeClass('clicked');
+        jQuery(this).find('.repoblock-box').css('border', '1px solid red').addClass('clicked');
+
         $path = jQuery(this).attr("data-path");
 
         jQuery.ajax({
@@ -55,6 +59,8 @@ jQuery(document).ready(function(){
         })
         .fail(function(jqXHR, textStatus, msg){
             alert(msg);
+            console.debug(textStatus);
+            console.debug(jqXHR);
         });
 
         //
@@ -73,6 +79,8 @@ jQuery(document).ready(function(){
         })
         .fail(function(jqXHR, textStatus, msg){
             alert(msg);
+            console.debug(textStatus);
+            console.debug(jqXHR);
         });
 
         //

@@ -8,90 +8,27 @@ use App\Http\Controllers\Controller;
 
 class PrincipalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
+        $lang = config('app.keys.lng');
+        $data = array();
+        foreach($lang as $lg)
+        {
+                $query = Repositorio::where('REP_LANG',$lg)->orderBy('REP_ORDER','asc')->get();
+                if($query)
+                {
+                    array_push($data, $query);
+                }
+                else
+                {
+                    array_push($data, null);
+                }
+        }
 
-        $yaml = Repositorio::where('REP_LANG','yaml')->orderBy('REP_ORDER','asc')->get();
-        $php = Repositorio::where('REP_LANG','php')->orderBy('REP_ORDER','asc')->get();
-        $html = Repositorio::where('REP_LANG','html')->orderBy('REP_ORDER','asc')->get();
-        $lua = Repositorio::where('REP_LANG','lua')->orderBy('REP_ORDER','asc')->get();
-        $python = Repositorio::where('REP_LANG','python')->orderBy('REP_ORDER','asc')->get();
-
-        $data = [$yaml, $php, $html, $lua, $python];
-
-        return view('principal\conteudo', ['name' => 'Conteúdo', 'data' => $data]);
+        return view('principal\conteudo', ['name' => 'Conteúdo', 'data' => $data, 'lang' => $lang]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     public function maketree($id, $path = null)
     {

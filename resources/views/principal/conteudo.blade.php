@@ -13,55 +13,64 @@
 
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    @foreach($lang as $i=>$lg)
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#yaml" role="tab" aria-controls="yaml" aria-selected="true">Yaml</a>
+                        @if($i == 0)
+                            <a class="nav-link active" id="{{ $lg }}-tab" data-toggle="tab" href="#{{ $lg }}" role="tab" aria-controls="{{ $lg }}" aria-selected="true">{{ ucfirst(strtolower($lg)) }}</a>
+                        @else
+                            <a class="nav-link" id="{{ $lg }}-tab" data-toggle="tab" href="#{{ $lg }}" role="tab" aria-controls="{{ $lg }}" aria-selected="true">{{ ucfirst(strtolower($lg)) }}</a>
+                        @endif
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#php" role="tab" aria-controls="php" aria-selected="false">PHP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#html" role="tab" aria-controls="html" aria-selected="false">HTML</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#lua" role="tab" aria-controls="lua" aria-selected="false">Lua</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#python" role="tab" aria-controls="python" aria-selected="false">Python</a>
-                    </li>
+                    @endforeach
+
                 </ul>
 
                 <!-- Tab panes -->
                 <div id="content-repos" class="tab-content">
-                    <div class="tab-pane active" id="yaml" role="tabpanel" aria-labelledby="yaml-tab">
-                        @foreach ($data[0] as $yaml)
-                            @include('partials.repoblock', ['repo' => $yaml])
-                        @endforeach
-                    </div>
-                    <div class="tab-pane" id="php" role="tabpanel" aria-labelledby="php-tab">
-                        @foreach ($data[1] as $php)
-                            @include('partials.repoblock', ['repo' => $php])
-                        @endforeach
-                    </div>
-                    <div class="tab-pane" id="html" role="tabpanel" aria-labelledby="html-tab">
-                        @foreach ($data[2] as $html)
-                            @include('partials.repoblock', ['repo' => $html])
-                        @endforeach
-                    </div>
-                    <div class="tab-pane" id="lua" role="tabpanel" aria-labelledby="lua-tab">
-                        @foreach ($data[3] as $lua)
-                            @include('partials.repoblock', ['repo' => $lua])
-                        @endforeach
-                    </div>
-                    <div class="tab-pane" id="python" role="tabpanel" aria-labelledby="python-tab">
-                        @foreach ($data[4] as $python)
-                            @include('partials.repoblock', ['repo' => $python])
-                        @endforeach
-                    </div>
+
+                    @foreach($lang as $i=>$lg)
+
+                        @if(count($data[$i]) > 0)
+
+                            @if($i == 0)
+                                <div class="tab-pane active" id="{{ $lg }}" role="tabpanel" aria-labelledby="{{ $lg }}-tab">
+                            @else
+                                <div class="tab-pane" id="{{ $lg }}" role="tabpanel" aria-labelledby="{{ $lg }}-tab">
+                            @endif
+
+                            @foreach ($data[$i] as $elem)
+                                    @include('partials.repoblock', ['repo' => $elem])
+                            @endforeach
+                        @else
+                            @if($i == 0)
+                                <div class="tab-pane active" id="{{ $lg }}" role="tabpanel" aria-labelledby="{{ $lg }}-tab">
+                            @else
+                                <div class="tab-pane" id="{{ $lg }}" role="tabpanel" aria-labelledby="{{ $lg }}-tab">
+                            @endif
+
+                            <div class="repoblock-box non">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="text-center">Não há informação</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
             <div class="col-6">
-                <div >
-                    <p class="lastupdade"><b>Última atualização: </b> {{ $data[0][1]->updated_at->format('d/m/Y \à\s H:m')  }}</p>
+                <div>
+                    @isset($data[0][1])
+                        <p class="lastupdade"><b>Última atualização: </b>{{ $data[0][1]->updated_at->format('d/m/Y \à\s H:m') }}</p>
+                    @endisset
+                    @empty($data[0][1])
+                            <p class="lastupdade"><b>Última atualização: </b> Nenhuma </p>
+                    @endempty
                 </div>
 
                 <div class="code-repos">

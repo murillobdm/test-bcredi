@@ -2,11 +2,11 @@
 <div class="repoblock-box">
     <div class="row">
         <div class="col-2">
-            <img src="{{ asset('/img/'.$repo->REP_LANG).'.png'  }}" alt="" class="repo-photo" style="border-radius: 50%;">
+            <img src="{{ asset('/img/'.$repo->REP_LANG.'.png')  }}" alt="" class="repo-photo" style="border-radius: 50%;">
         </div>
         <div class="col-10">
             <h3>{{ $repo->REP_NAME }}</h3>
-            <p>por <img src="http://placehold.it/20x20" alt="{{ $repo->REP_AUTHOR }}" style="border-radius: 50%;" > <i>{{ $repo->REP_AUTHOR }}</i></p>
+            <p>por <img src="{{ asset('/img/user.png')  }}" alt="{{ $repo->REP_AUTHOR }}" style="border-radius: 50%;" > <i>{{ $repo->REP_AUTHOR }}</i></p>
             <p class="desc">{{ $repo->REP_DESC }}</p>
 
             <div class="gitbuttons">

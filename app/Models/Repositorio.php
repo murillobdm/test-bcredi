@@ -9,7 +9,7 @@ class Repositorio extends Model
     protected $primaryKey = 'REP_ID';
 
     protected $fillable = [
-        'REP_LANG', 'REP_ORDER', 'REP_NAME', 'REP_AUTHOR', 'REP_URL', 'REP_DESC', 'REP_STARS', 'REP_FORKS', 'REP_BUILTBY', 'REP_TREE'
+        'REP_LANG', 'REP_ORDER', 'REP_NAME', 'REP_AUTHOR', 'REP_URL', 'REP_DESC', 'REP_STARS', 'REP_FORKS', 'REP_BUILTBY', 'REP_TREE', 'REP_SHA'
     ];
 
     protected $attributes = [
